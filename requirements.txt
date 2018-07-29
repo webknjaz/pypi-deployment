@@ -1,3 +1,4 @@
 CherryPy==17.0.0
+envparse
 pygithub
 requests==2.19.1
