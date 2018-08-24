@@ -17,7 +17,7 @@ server_port = env('PORT', cast=int, default=8080)
 
 app_id = env('GH_APP_ID', cast=int)
 install_id = env('GH_INSTALL_ID', cast=int)
-private_key_path = env('GH_PRIVATE_KEY_PATH')
+private_key_path = env('GH_PRIVATE_KEY_PATH', default=None)
 private_key = env('GH_PRIVATE_KEY', default=None)
 
 # oauth:
