@@ -1,4 +1,4 @@
-CherryPy==17.0.0
+CherryPy==17.3.0
 envparse
-pygithub
+pygithub[integrations]
 requests==2.19.1

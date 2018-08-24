@@ -208,6 +208,34 @@
                 },
                 "env": [
                   {
+                    "name": "GH_APP_ID",
+                    "value": "${GH_APP_ID}"
+                  },
+                  {
+                    "name": "GH_INSTALL_ID",
+                    "value": "${GH_INSTALL_ID}"
+                  },
+                  {
+                    "name": "GH_PRIVATE_KEY_PATH",
+                    "value": "${GH_PRIVATE_KEY_PATH}"
+                  },
+                  {
+                    "name": "GH_PRIVATE_KEY",
+                    "value": "${GH_PRIVATE_KEY}"
+                  },
+                  {
+                    "name": "GH_OAUTH_CLIENT_ID",
+                    "value": "${GH_OAUTH_CLIENT_ID}"
+                  },
+                  {
+                    "name": "GH_OAUTH_CLIENT_SECRET",
+                    "value": "${GH_OAUTH_CLIENT_SECRET}"
+                  },
+                  {
+                    "name": "NGROK_TUN_SLUG",
+                    "value": "${NGROK_TUN_SLUG}"
+                  },
+                  {
                     "name": "APP_CONFIG",
                     "value": "${APP_CONFIG}"
                   },
