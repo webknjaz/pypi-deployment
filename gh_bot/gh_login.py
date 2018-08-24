@@ -12,7 +12,7 @@ import requests
 from .config import (
     # oauth:
     client_id, client_secret,
-    gh_auth_url,
+    gh_auth_url_tmpl,
 )
 
 
@@ -27,8 +27,9 @@ class GitHubLogin:
                 'secret-' +
                 str(uuid.uuid1()).rpartition('-')[-1]
             )
+            fqdn = cherrypy.request.headers['Host']
             raise cherrypy.HTTPRedirect(
-                gh_auth_url +
+                gh_auth_url_tmpl.format(app_domain=fqdn) +
                 '&state=' +
                 cherrypy.session['gh_oauth_state']
             )

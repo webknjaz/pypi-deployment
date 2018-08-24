@@ -24,5 +24,4 @@ private_key = env('GH_PRIVATE_KEY', default=None)
 client_id = env('GH_OAUTH_CLIENT_ID')
 client_secret = env('GH_OAUTH_CLIENT_SECRET')
 
-app_domain = env('GH_APP_DOMAIN', default=None) or f"{env('NGROK_TUN_SLUG')}.ngrok.io"
-gh_auth_url = f'https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri=https%3A%2F%2F{app_domain}%2Flogin%2Foauth'
+gh_auth_url_tmpl = f'https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri=https%3A%2F%2F{{app_domain}}%2Flogin%2Foauth'
