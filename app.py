@@ -103,18 +103,22 @@ class GitHubApp:
         cherrypy.quickstart(root_app, '/', app_config)
 
 
-__name__ == '__main__' and GitHubApp.run_server(
-    cp_config={'server.socket_port': server_port},
-    app_config={
-        '/':
-            {
-                'tools.sessions.on': True,
-                'tools.trailing_slash.on': False,
-                'request.dispatch': GithubEventDispatcher(),
-            },
-        '/gh_events/':
-            {
-                'tools.trailing_slash.on': False,
-            },
-     },
-)
+def main():
+    GitHubApp.run_server(
+        cp_config={'server.socket_port': server_port},
+        app_config={
+            '/':
+                {
+                    'tools.sessions.on': True,
+                    'tools.trailing_slash.on': False,
+                    'request.dispatch': GithubEventDispatcher(),
+                },
+            '/gh_events/':
+                {
+                    'tools.trailing_slash.on': False,
+                },
+         },
+    )
+
+
+__name__ == '__main__' and main()
