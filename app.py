@@ -78,24 +78,25 @@ class GitHubApp:
 
         print(f'==============> Requesting deploy of {ref}')
 
+        post_parameters = {'ref': ref, 'task': task_tag}
         access_token = cherrypy.session['gh_access_token']
         print(access_token)
 	#requests.post('https://github.com/login/oauth/access_token', data=data).text.lstrip('access_token=').rstrip('&token_type=bearer')
         #gh_user = requests.get(f'https://api.github.com/user?access_token={access_token}').json()
-        dpl_res = requests.post(f'https://api.github.com/repos/{repo_slug}/deployments?access_token={access_token}', json={'ref': ref, 'task': task_tag})
+        dpl_res = requests.post(f'https://api.github.com/repos/{repo_slug}/deployments?access_token={access_token}', json=post_parameters)
         pprint(dpl_res)
-        return 'OK'
-        import ipdb; ipdb.set_trace()
+        pprint(dpl_res.text)
+        #return 'OK'
+        #import ipdb; ipdb.set_trace()
         gh_int = get_github_integration(app_id, private_key_path)
         gh_client = get_installation_client(gh_int, installation_id)
 
         rp = gh_client.get_repo(repo_slug)
         #import ipdb; ipdb.set_trace()
-        post_parameters = {'ref': ref, 'task': task_tag}
         headers, data = rp._requester.requestJsonAndCheck(
             "POST",
             rp.url + "/deployments",
-            input=post_parameters
+            input=post_parameters,
         )
         pprint(headers)
         pprint(data)
