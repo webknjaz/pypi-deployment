@@ -35,7 +35,11 @@ class GitHubLogin:
             )
 
     @cherrypy.expose
-    def oauth(self, code, state):
+    def oauth(
+        self, state,
+        code=None,
+        error=None, error_description=None, error_uri=None,
+    ):
         print(code, state)
         try:
             if state != cherrypy.session['gh_oauth_state']:
@@ -48,6 +52,14 @@ class GitHubLogin:
             raise cherrypy.HTTPError(
                 401,
                 'Go to <a href="/">Home</a> for login.',
+            )
+
+        if error:
+            raise cherrypy.HTTPError(
+                401,
+                f'OAuth error `{error}`: {error_description}. '
+                f'URL: {error_uri}. Try '
+                '<a href="/login">login</a> again.',
             )
 
         data = {
