@@ -78,7 +78,10 @@ class GitHubApp:
 
         print(f'==============> Requesting deploy of {ref}')
 
-        post_parameters = {'ref': ref, 'task': task_tag}
+        post_parameters = {
+            'ref': ref, 'task': task_tag,
+            'required_contexts': [],  # This makes GitHub turn off success check
+        }
         access_token = cherrypy.session['gh_access_token']
         print(access_token)
 	#requests.post('https://github.com/login/oauth/access_token', data=data).text.lstrip('access_token=').rstrip('&token_type=bearer')
