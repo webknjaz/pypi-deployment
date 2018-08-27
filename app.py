@@ -83,6 +83,7 @@ class GitHubApp:
 	#requests.post('https://github.com/login/oauth/access_token', data=data).text.lstrip('access_token=').rstrip('&token_type=bearer')
         #gh_user = requests.get(f'https://api.github.com/user?access_token={access_token}').json()
         dpl_res = requests.post(f'https://api.github.com/repos/{repo_slug}/deployments?access_token={access_token}', json={'ref': ref, 'task': task_tag})
+        pprint(dpl_res)
         return 'OK'
         import ipdb; ipdb.set_trace()
         gh_int = get_github_integration(app_id, private_key_path)
