@@ -36,7 +36,15 @@ class GitHubApp:
     @cherrypy.expose
     @cherrypy.tools.sessions()
     def list_repos(self, install_id=None):
-        installs = map(lambda i: i['id'], cherrypy.session['gh_installations']) if install_id is None else [install_id]
+        with cherrypy.HTTPError.handle(KeyError, 401):
+            installs = (
+                map(
+                    lambda i: i['id'],
+                    cherrypy.session['gh_installations'],
+                )
+                if install_id is None
+                else [install_id]
+            )
         installs = list(map(int, installs))
 
         resp = []
