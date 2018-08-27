@@ -18,7 +18,7 @@ def get_app_key(key_path):
     try:
         with open(key_path) as f:
             return f.read()
-    except (TypeError, ValueError):
+    except (IOError, TypeError, ValueError):
         return env('GH_PRIVATE_KEY')
 
 
