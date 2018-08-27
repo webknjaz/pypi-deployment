@@ -30,7 +30,7 @@ class GitHubApp:
         gh_client = get_installation_client(gh_int, install_id)
         access_token = cherrypy.session['gh_access_token']
         chk_res = requests.post(f'https://api.github.com/repos/{repo_slug}/check-runs?access_token={access_token}', json={'head_branch': head_branch, 'head_sha': head_sha, 'name': 'wk:check:test', 'status': 'completed', 'completed_at': '2018-05-27T00:30:33Z', 'conclusion': 'neutral'}, headers={'Accept': 'application/vnd.github.antiope-preview+json'})
-        import ipdb; ipdb.set_trace()
+        # import ipdb; ipdb.set_trace()
         return 'OK'
 
     @cherrypy.expose
