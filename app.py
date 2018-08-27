@@ -36,7 +36,10 @@ class GitHubApp:
     @cherrypy.expose
     @cherrypy.tools.sessions()
     def list_repos(self, install_id=None):
-        with cherrypy.HTTPError.handle(KeyError, 401):
+        with cherrypy.HTTPError.handle(
+            KeyError,
+            401, 'Go to /login to authenticate first',
+        ):
             installs = (
                 map(
                     lambda i: i['id'],
