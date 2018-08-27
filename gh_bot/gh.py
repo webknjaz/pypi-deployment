@@ -7,6 +7,7 @@ from github import Github, GithubIntegration
 from .config import (
     app_id,
     install_id,
+    private_key,
 )
 
 
@@ -19,7 +20,7 @@ def get_app_key(key_path):
         with open(key_path) as f:
             return f.read()
     except (IOError, TypeError, ValueError):
-        return env('GH_PRIVATE_KEY')
+        return private_key
 
 
 @cache_once()
