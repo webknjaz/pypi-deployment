@@ -1,5 +1,10 @@
 #! /usr/bin/env python
 
+
+# TODO: look for inspiration @
+# https://github.com/openstack-infra/zuul/blob/4895b9b/zuul/driver/github/githubconnection.py
+# https://github.com/openstack-infra/zuul/commit/0eeceba
+
 from pprint import pprint
 
 import cherrypy
