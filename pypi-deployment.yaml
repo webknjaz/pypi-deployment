@@ -13,9 +13,9 @@ metadata:
     openshift.io/documentation-url: >
       https://github.com/webknjaz/pypi-deployment
     openshift.io/long-description: >
-      This template defines resources needed to develop
-      a GitHub Bot application, including a build configuration and application deployment
-      configuration.  It does not include a database.
+      This template defines resources needed to develop a GitHub Bot
+      application, including a build configuration and application
+      deployment configuration.  It does not include a database.
     openshift.io/provider-display-name: >
       @webknjaz
     openshift.io/support-url: >
@@ -162,7 +162,9 @@ objects:
       type: ImageChange
     - type: ConfigChange
 parameters:
-- description: The name assigned to all of the frontend objects defined in this template.
+- description: >
+    The name assigned to all of the frontend objects
+    defined in this template.
   displayName: Name
   name: NAME
   required: true
